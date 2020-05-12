@@ -12,6 +12,12 @@ color: white;
     border-bottom: 10px solid yellow;
 }
 
+@media(max-width:600px){
+    header footer {
+              width: 100%;
+    }
+}
+
 .header-logo h2{
   padding: 20px;
   font-family:'Philosopher',serif;
@@ -86,6 +92,7 @@ img{
 table{
   font-size: 30px;
   display: inline-block;
+  position: relative;
 }
 
 .money h4{
