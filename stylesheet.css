@@ -1,0 +1,127 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  margin:0 auto;
+  }
+
+.background{
+color: white;
+  background-image: url(images/sinrin.jpg);
+  background-size:cover;
+  min-height: 800px;
+    border-bottom: 10px solid yellow;
+}
+
+.header-logo h2{
+  padding: 20px;
+  font-family:'Philosopher',serif;
+  font-size: 30px;
+}
+
+.header-list li{
+  padding: 20px;
+  list-style: none;
+}
+.header-list {
+  display: flex;
+}
+
+.top{
+  text-align: center;
+  font-family:'Philosopher',serif;
+  padding-top: 50px;
+}
+
+h1{
+ font-size: 70px;
+}
+
+top .p{
+  font-size: 70px;
+}
+
+img{
+  height: 300px;
+  width: 300px;
+}
+
+.vegis{
+  text-align: center;
+  padding:30px 30px 30px 30px;
+  border-bottom: 6px solid yellow;
+  background-color: #eaf6fd;
+}
+
+.vegis h4{
+  font-size: 60px;
+  padding-bottom: 50px;
+}
+
+.vegi{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:40px;
+
+}
+
+.item{
+  border: 2px solid black;
+  box-shadow: 5px 5px #dddddd;
+  border-radius: 10px;
+}
+
+.item:hover{
+  position: relative;
+  bottom: 5px;
+  }
+
+.money{
+  padding-top: 30px;
+  text-align: center;
+  border-bottom: 6px solid yellow;
+  height: 550px;
+  background-color: #eaf6fd;
+}
+
+table{
+  font-size: 30px;
+  display: inline-block;
+}
+
+.money h4{
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+.money p{
+  padding-bottom: 20px;
+}
+
+footer{
+  text-align: center;
+  border-bottom: 6px solid yellow;
+  padding: 20px 0px;
+  background-color: #eaf6fd;
+}
+
+.footer-item h4{
+  font-size: 30px;
+  padding-bottom: 20px;
+
+}
+
+.twitter{
+  background-color: #4699ca;
+  color: white;
+}
+
+.facebook{
+  background-color: #1760a0;
+  color: white;
+}
+
+.btn{
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 8px;
+}
