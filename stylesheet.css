@@ -104,6 +104,12 @@ table{
   position: relative;
 }
 
+
+table ,th ,tr{
+  border: 1px solid black;
+}
+
+
 .money h4{
   font-size: 60px;
   padding-bottom: 20px;
