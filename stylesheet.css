@@ -4,6 +4,10 @@ header{
   margin:0 auto;
   }
 
+*{
+  box-sizing: border-box;
+}
+
 .background{
 color: white;
   background-image: url(images/sinrin.jpg);
