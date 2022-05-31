@@ -1,149 +1,570 @@
-header{
-  display: flex;
-  justify-content: space-between;
-  margin:0 auto;
-  }
-
 *{
-  box-sizing: border-box;
+  font-family: serif ;
 }
 
-.background{
-color: white;
-  background-image: url(images/sinrin.jpg);
-  background-size:cover;
-  min-height: 800px;
-    border-bottom: 10px solid yellow;
+
+body{
+  /*background-image: url(images/haikei.jpg);*/
+  background-color: #dddddd;
+  background-size:cover ;
+  margin: 0;   /*デフォルトの空欄を消すため*/
+  padding: 0;
 }
 
-img{
-  max-width: 100%;
-  height:auto;
-}
-
-@media(max-width:600px){
-    header footer {
-              width: 100%;
-    }
-}
-
-.header-logo h2{
-  padding: 20px;
-  font-family:'Philosopher',serif;
-  font-size: 30px;
-}
-
-.header-list li{
-  padding: 20px;
-  list-style: none;
-}
-.header-list {
-  display: flex;
+header{
+  background-color: white;
+  border-bottom: 3px solid black;
+  
 }
 
 .top{
-  text-align: center;
-  font-family:'Philosopher',serif;
-  padding-top: 50px;
+  display: flex;
 }
 
-h1{
- font-size: 70px;
+.top-left{
+  font-size: 40px;
+  padding-left:10%;
+  padding-right: 42%;
+  padding-top: 5px;
+  font-family:cursive;
 }
 
-top .p{
-  font-size: 70px;
+
+.top-right{
+  font-size: 18px;
+  margin-top: 3px;
+  padding-right: 2%;
 }
 
-img{
-  height: 300px;
-  width: 300px;
+.oomoji{
+  font-size: 25px;
+  color: burlywood;
 }
 
-.vegis{
-  text-align: center;
-  padding:30px 30px 30px 30px;
-  border-bottom: 6px solid yellow;
-  background-color: #eaf6fd;
+.top-item{
+  display: flex;
+  margin: auto;
+  width: 520px;
+  padding: 1% 0% 1% 0%;
 }
 
-.vegis h4{
-  font-size: 60px;
-  padding-bottom: 50px;
+.top-item li{
+  margin:0px 10px 0px 10px;
+  list-style: none;
+  font-size: 20px;
 }
 
-.vegi{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:40px;
-
+.top-item a{
+  color: black;
+  text-decoration:none;
 }
 
-.item{
-  border: 2px solid black;
-  box-shadow: 5px 5px #dddddd;
-  border-radius: 10px;
+#menu-btn-check {
+  display: none;
 }
 
-.item:hover{
+.menu-content {
+  display: none;
+}
+
+.home{
+  background-image: url(images/kome.png);
+  background-size:cover ;
+  height: 800px;
+  /*margin-left:5%;
+  margin-right:5%;*/
+  margin-left:0%;
+  margin-right:0%;
   position: relative;
-  bottom: 5px;
+}
+
+.home-title{
+  padding: 10% 0px 0% 10%;
+  color: white;
+  font-size: 35px;
+  opacity: 0.8;
+  display: inline-block; /*headerと背景画像の間の余白を埋めるため親homeの中の一部をinlineにする*/
+}
+
+.title-png{
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  height: 300px;
+}
+
+/*ぬるっとでてくるやつ*/
+.animation{
+  opacity : 0;
+	visibility: hidden;
+	transition: 1.5s;
+	transform: translateY(30px);
+}
+
+.active{
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+/*ここまでぬるっと*/
+
+
+.greeting{
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-color: white;
+  position: relative;/*ひよこのため*/
+}
+
+.greeting-left{
+  margin-left: 25%;
+  padding-right: 5%;
+  padding-top: 6px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.greeting-right{
+  line-height: 70px;
+}
+
+
+.hiyoko{ /*いるかわからん*/
+  position: absolute;
+  top:45%;
+  left: 25%;
+  height: 100px;
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .greeting-left{
+    margin-left: 15%;
+  }
+}  
+@media (max-width: 1100px) {
+  .greeting{
+    display: block;
+    text-align: center;
+  }
+  .greeting-left{
+    margin-left: 0%;
+    padding-right: 0%;
+    line-height: 70px;
+  }
+  .hiyoko{
+    display: none;
+  }
+}
+
+
+
+.content-title{
+  text-align: center;
+  color:#1760a0;
+  font-size:40px;
+  margin-top: 30px;
+}
+
+/*みかん*/
+.content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-right{
+  width: 35%;
+  margin-left:5%;
+  margin-right:10%;
+  /*writing-mode: vertical-rl; /*縦書き*/
+}
+
+.content-main{
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.content-suv{
+  font-size: 15px;
+  overflow-wrap: normal;/*改行*/
+}
+
+.content-left{
+  padding-left: 10%;
+  padding-top: 5%;
+  width: 50%;
+}
+.content-png{
+  width: 100%;
+}
+
+
+/*米*/
+.kome{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+}
+
+.kome-left{
+  width: 35%;
+  margin-left:10%;
+  margin-right:5%;
+}
+
+.kome-main{
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.kome-suv{
+  font-size: 15px;
+  overflow-wrap: normal;
+}
+
+.kome-right{
+  padding-top: 5%;
+  padding-right: 10%;
+  width: 50%;
+}
+
+.kome-png{
+  width: 100%;
+}
+
+
+
+.yasai a{
+  text-decoration:none; 
+}
+
+.yasai-item{
+   display: block;
+   text-align: center;
+   color: #1760a0;
+   font-size: 20px;
+   border: 1px solid #1760a0; 
+   margin: 20px 200px;
+   padding: 20px 3px;
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+  .top-left{
+    padding-right: 36%;
+  }
+}  
+@media (max-width: 1100px) {
+  .top-left{
+    padding-right: 28%;
+  }
+  .home{
+    margin-left:0%;
+    margin-right:0%;
+  }
+}
+
+@media (max-width: 900px) {
+  .kome{
+    height:700px;
+    margin-top: 10%;
+    display: block;
+    position: relative;
+  }
+  .content{
+    display: block;
+  }
+  .content-left{
+    padding-left: 10%;
+    padding-top: 5%;
+    width: 80%;
+  }
+  .content-right{
+    text-align: center;
+    width: 80%;
+    padding-left: 10%;
+    margin-left:0%;
+    margin-right:0%;
+  }
+  .kome-right{
+    padding-top: 5%;
+    padding-left: 10%;
+    width: 80%; 
+    position: absolute;
+    top:0; 
   }
 
-.money{
-  padding-top: 30px;
-  text-align: center;
-  border-bottom: 6px solid yellow;
-  height: 550px;
-  background-color: #eaf6fd;
+  .kome-left{
+    text-align: center;
+    width: 80%;
+    margin-left:0%;
+    margin-right:0%;
+    padding-left: 10%;
+    position: absolute;
+    bottom:0;
+  }
+
+  .yasai-item{
+    font-size: 20px; 
+    margin: 20px 120px;
+    padding: 20px 3px;
+ }
+}
+@media (max-width: 700px) {
+.kome-left{
+  position: absolute;
+  bottom:12%;
+}
 }
 
-table{
-  font-size: 30px;
-  display: inline-block;
-  position: relative;
+
+@media (max-width: 900px) {
+  .home{
+    height: 500px;
+    text-align: center; /*下のimgを中央寄せにするために入れた*/
+  }
+
+  .home-title{
+    display: inline-block;
+    padding: 5% 0px 0% 0%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .title-png{
+    position: static;
+    height: 250px;
+  }
+
+  .top{
+  display: block;
+  }
+
+  .top-left{
+    display: block;
+    font-size: 40px;
+    padding-left:10%;
+    padding-top: 5px;
+    font-family:cursive;
+  }
+  
+  .top-right{
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left:10%;
+  }
+
+  .top-item{
+  display: none;
+  }
+
+
+  
+
+
+  .menu-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  background-color: #3584bb;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+    content: ''; /*前後にbeforeやafterを入れるためのプロパティ*/
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+  }
+  .menu-btn span:before {
+    bottom: 8px;
+  }
+  .menu-btn span:after {
+    top: 8px;
+  }
+  #menu-btn-check:checked ~ .menu-btn span {
+  background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+  }
+  #menu-btn-check:checked ~ .menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg); /*回転させる*/
+  }
+  #menu-btn-check:checked ~ .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+  }
+  #menu-btn-check:checked ~ .menu-content {
+ display: block;
+  }
+}/*メディアクエリ*/
+
+
+
+
+.menu-content {
+    width: 100%;
+    height: 100%; /*pxで高さを指定できる*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    background-color: #3584bb;
+   
+}
+
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
 }
 
 
-table ,th ,tr{
-  border: 1px solid black;
+.twitter-follow-button{
+  width:30%;
+  margin-left: 20%;
+}
+
+.Twitter {
+  height: 420px;
+  overflow: auto;
+  width:30%;
+  margin-left: 20%;
 }
 
 
-.money h4{
-  font-size: 60px;
-  padding-bottom: 20px;
+/*Googleマップ*/
+.map{
+  display: flex;
+  background-color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.map-left{
+  width: 20%;
+  margin-left: 10%;
+  margin-right: 2%;
+}
+.map-main{
+  font-size: 18px;
+  border-bottom: 1px solid blue;
+}
+.map-right{
+  width:80%;
+  padding-right: 8%;
+}
+.map-item{
+  width:100%;
+  height: 450px;
 }
 
-.money p{
-  padding-bottom: 20px;
+@media (max-width: 900px) {
+  .map{
+    display: block;
+  }
+  .map-main{
+    width: 60%;
+  }
+  .map-left{
+    width: 100%;
+    margin-left: 10%;
+  }
+  .map-right{
+    width:80%;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
 }
 
+
+
+
+
+
+
+
+/*フッター*/
 footer{
-  text-align: center;
-  border-bottom: 6px solid yellow;
-   padding: 35px 0px 40px 0px;
-  background-color: #eaf6fd;
-}
-
-.footer-item h4{
-  font-size: 30px;
-  padding-bottom: 20px;
-
-}
-
-.twitter{
-  background-color: #4699ca;
+  background-color: #333333;
   color: white;
-}
-
-.facebook{
-  background-color: #1760a0;
-  color: white;
-}
-
-.btn{
   display: inline-block;
-  padding: 8px 24px;
-  border-radius: 8px;
+  width: 100%;
+}
+
+.foot-item{
+  padding-top: 2%;
+  margin: auto;
+  width: 500px;
+  display: flex;
+}
+
+.foot-item li{
+  margin:0px 10px 0px 10px;
+  list-style: none;
+  font-size: 15px;
+}
+
+.foot-item a{
+  color:white;
+  text-decoration:none; /*aタグの下線を消す*/
+}
+
+.foot{
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+@media (max-width: 900px) {
+  .foot-item{
+    display:block;
+    text-align: center;
+    width:200px;
+    padding-right:5%;
+  }
+
+  .foot-item li{
+    margin: 2px 4px 2px 0px;
+    list-style:none;
+  }
 }
