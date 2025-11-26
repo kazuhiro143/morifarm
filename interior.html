@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店内 | 炭火焼鳥 Dining 晴レル屋</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+        /* -------------------------------------- */
+        /* --- 2. CSS コード (共通スタイル) --- */
+        /* -------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: #EAEAEA;
+            background-color: #1A1A1A;
+            line-height: 1.6;
+        }
+        a {
+            color: #C0A04C;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #EAEAEA;
+        }
+        
+        /* コンテナ */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #0D0D0D;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #C0A04C;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            display: block;
+        }
+        
+        /* ナビゲーション - デスクトップ用 */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 400;
+            padding: 5px 0;
+            display: block;
+        }
+
+        /* ハンバーガーメニューアイコン（モバイルでのみ表示） */
+        .menu-toggle {
+            display: none;
+            color: #C0A04C;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* -------------------------------------- */
+        /* --- 3. 店内ページ専用スタイル --- */
+        /* -------------------------------------- */
+
+        /* ヒーロー（背景画像とこだわり）セクション */
+        #interior-hero {
+            position: relative;
+            height: 50vh;
+            /* **ここに店内の背景画像を掲載** */
+            background: url('interior-hero-background.jpg') no-repeat center center/cover; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+        .hero-content {
+            z-index: 10;
+            max-width: 700px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center; /* 修正: ヒーローコンテンツ内のテキストを中央揃え */
+        }
+        #interior-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #C0A04C;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        #interior-hero p {
+            font-size: 16px;
+            color: #EAEAEA;
+            line-height: 1.8;
+        }
+
+        /* ギャラリーセクション */
+        #gallery {
+            padding: 60px 0;
+            text-align: center; /* セクション内のテキストを中央揃え */
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #C0A04C;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin: 0 auto 40px auto; /* 修正: 中央寄せを確実にする */
+            border-bottom: 1px solid #444;
+            display: block; /* 修正: blockに変更し、margin:autoを有効化 */
+            padding-bottom: 5px;
+            width: fit-content; /* 内容の幅に合わせる */
+        }
+
+        /* カテゴリタイトル */
+        .interior-category-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #F5F5F5;
+            text-align: left; /* カテゴリタイトル自体は左揃えを維持 */
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #C0A04C; 
+            margin-bottom: 20px;
+        }
+
+        /* 画像アイテムのコンテナ */
+        .image-container {
+            margin-bottom: 40px;
+            text-align: left; /* 画像下の説明文を左揃えにするため、コンテナのテキスト揃えを変更 */
+        }
+
+        /* 個別の画像アイテム */
+        .image-item {
+            width: 100%;
+            height: 250px; 
+            margin-bottom: 15px;
+            background-color: #222;
+            background-position: center center;
+            background-size: cover;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #888;
+            border: 1px solid #333;
+        }
+        .image-item p {
+            z-index: 10;
+        }
+        
+        /* 仮の画像クラス */
+        .image-item.private-room { background-image: url('room-private.jpg'); } 
+        .image-item.counter-seat { background-image: url('room-counter.jpg'); } 
+        .image-item.table-seat { background-image: url('room-table.jpg'); } 
+        .image-item.banquet-room { background-image: url('room-banquet.jpg'); } 
+
+
+        /* フッター (ホームと共通) */
+        footer {
+            background-color: #0D0D0D;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        footer p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* -------------------------------------- */
+        /* --- モバイル向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (max-width: 600px) {
+            /* ハンバーガーメニューの表示 (前ページと共通) */
+            nav {
+                display: none;
+                position: absolute;
+                top: 51px;
+                left: 0;
+                width: 100%;
+                background-color: #1A1A1A;
+                border-top: 1px solid #333;
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+            nav.active {
+                display: block; 
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li a {
+                padding: 10px 0;
+                border-bottom: 1px dashed #333;
+                font-size: 16px;
+            }
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block; 
+            }
+
+            .header-content {
+                padding: 0 15px;
+            }
+        }
+        
+        /* -------------------------------------- */
+        /* --- PC/タブレット向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (min-width: 601px) {
+            nav {
+                display: block !important;
+            }
+            #interior-hero h1 {
+                font-size: 48px;
+            }
+            /* PCでは画像を左右に配置するレイアウト */
+            .image-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+            }
+            .image-item {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">炭火焼鳥 Dining 晴レル屋</a>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html#hero">ホーム</a></li>
+                    <li><a href="index.html#about">こだわり</a></li>
+                    <li><a href="menu_food.html">お品書き</a></li> 
+                    <li><a href="menu_drink.html">お飲み物</a></li>
+                    <li><a href="#" style="color: #F5F5F5; border-bottom: 2px solid #C0A04C;">店内</a></li>
+                </ul>
+                </nav>
+        </div>
+    </header>
+
+    <section id="interior-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>落ち着きと洗練の空間</h1>
+            <p>
+                上質な食の体験を支えるのは、細部にまでこだわった空間設計です。
+                綺麗な店内には、大切な方との会話を楽しめる個室の用意をしており、落ち着いた雰囲気でゆったりと食事を楽しめるのが特徴です。
+            </p>
+        </div>
+    </section>
+
+    <section id="gallery" class="container">
+        <h2 class="section-title">THE INTERIOR</h2>
+        <p class="section-subtitle">用途に合わせて選べる、様々なタイプのお席</p>
+
+        <div class="image-container">
+            <div class="interior-category-title">◆ 個室 （Private Room）</div>
+            <div class="image-item private-room">
+                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[個室の画像]</p>
+            </div>
+            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                接待やお祝いの席に最適な、4名様から最大14名様までご利用いただける完全個室をご用意しております。
+            </p>
+        </div>
+
+        <div class="image-container">
+            <div class="interior-category-title">◆ カウンター席 （Counter）</div>
+            <div class="image-item counter-seat">
+                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[カウンター席の画像]</p>
+            </div>
+            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                目の前で繰り広げられる職人の技を堪能できる特等席。お一人様やデートに最適です。
+            </p>
+        </div>
+        
+        <div class="image-container">
+            <div class="interior-category-title">◆ テーブル席 （Table Seat）</div>
+            <div class="image-item table-seat">
+                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[テーブル席の画像]</p>
+            </div>
+            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                ご友人やご家族とのカジュアルな会食に。広々とした落ち着いた空間です。
+            </p>
+        </div>
+
+        <div class="image-container">
+            <div class="interior-category-title">◆ 宴会用スペース （Banquet）</div>
+            <div class="image-item banquet-room">
+                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[宴会用スペースの画像]</p>
+            </div>
+            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                最大14名様まで対応可能な個室、またはテーブルを繋げた団体利用が可能です。
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sumibiyakitori Dining Hareruya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').onclick = function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
