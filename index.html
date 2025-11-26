@@ -145,6 +145,11 @@
             padding-bottom: 5px;
         }
 
+        /* 修正 2: 背景色をbodyと統一 */
+        #about {
+            background-color: #1A1A1A; 
+        }
+
         /* メニュー誘導セクションの共通スタイル (画面端まで広がる) */
         .full-width-section {
             padding: 120px 15px; 
@@ -225,6 +230,7 @@
         #news {
             padding-top: 100px; 
             padding-bottom: 100px; 
+            background-color: #1A1A1A; /* 修正 2: 背景色をbodyと統一 */
         }
         /* お知らせリストのスタイル */
         .news-list {
@@ -340,11 +346,8 @@
                 padding: 80px 0; 
             }
             
-            /* #about の上部余白を調整 (100px -> 60px に変更) */
-            #about {
-                padding-top: 60px; /* 修正: 上部余白を調整 */
-            }
-
+            /* モバイル版の #about の上部余白調整を削除し、一律 80px に統一 */
+            
             .full-width-section {
                 padding: 100px 15px; 
                 margin: 60px 0; 
@@ -508,7 +511,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Sumibiyakitori Dining Hareruya. All Rights Reserved.</p>
+            <p>© 2025 Sumibiyakitori Dining Hareruya. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -520,4 +523,3 @@
 
 </body>
 </html>
-        
