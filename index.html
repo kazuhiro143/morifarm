@@ -1,165 +1,372 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>home</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  </head>
-  <body>
-  
-    <header>
-      <div class="top">
-        <div class="top-left">
-          MORIFARM
-        </div>
-        <div class ="top-right">
-          〒590-0124  &nbsp;  大阪府堺市南区畑245-1
-            <br>&nbsp;<span class="oomoji">TEL 072-292-7474</span>
-        </div>
-        </div>   
-      </div>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炭火焼鳥 Dining 晴レル屋 - 洗練された大人の空間</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+        /* -------------------------------------- */
+        /* --- 2. CSS コード (この下に続きます) --- */
+        /* -------------------------------------- */
 
-      <ul class="top-item">
-        <li><a class="comand-link" href="#">ホーム</a></li>
-        <li><a class="comand-link" href="#">商品の購入</a></li>
-        <li><a class="comand-link" href="#">上神谷のみかん</a></li>
-        <li><a class="comand-link" href="#">上神谷米</a></li>
-        <li><a class="comand-link" href="#">野菜</a></li>
-    </ul>
+        /* リセットと基本設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: #EAEAEA;
+            background-color: #1A1A1A;
+            line-height: 1.6;
+        }
+        a {
+            color: #C0A04C;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #EAEAEA;
+        }
+        
+        /* コンテナ */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-    <div class="hamburger-menu">
-      <input type="checkbox" id="menu-btn-check">  <!--typeでいろいろ変化できる-->
-     <label for="menu-btn-check" class="menu-btn"><span></span></label>
-     <!--ここからメニュー-->
-     <div class="menu-content">
-      <ul>
-          <li>
-              <a href="#">ホーム</a>
-          </li>
-          <li>
-              <a href="#">商品の購入</a>
-          </li>
-          <li>
-              <a href="#">上神谷のみかん</a>
-          </li>
-          <li>
-             <a href="#">上神谷米</a>
-          </li>
-          <li>
-             <a href="#">野菜</a>
-          </li>
-      </ul>
-     </div>
-  <!--ここまでメニュー-->
-     </div>
-    </header>
-    
-    
+        /* ヘッダー */
+        header {
+            background-color: #0D0D0D;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #C0A04C;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            display: block;
+        }
+        
+        /* ナビゲーション - デスクトップ用 */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 400;
+            padding: 5px 0;
+            display: block;
+        }
 
-    <div class="home">
-      <p class="home-title">自然広がる上神谷で<br>
-      &nbsp;&nbsp;農業を営む森ファーム</p>
+        /* ハンバーガーメニューアイコン（モバイルでのみ表示） */
+        .menu-toggle {
+            display: none;
+            color: #C0A04C;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* ヒーローセクション */
+        #hero {
+            position: relative;
+            height: 80vh;
+            /* ヒーローセクションの背景画像 */
+            background: url('title-background.jpg') no-repeat center center/cover; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .hero-content {
+            z-index: 10;
+        }
+        #hero h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #F5F5F5;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        #hero p {
+            font-size: 16px;
+            color: #C0A04C;
+            margin-bottom: 10px;
+        }
+        
+        /* セクション共通 - PC版は十分な余白 (100px) を維持 */
+        section {
+            padding: 100px 0; 
+            text-align: center;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #C0A04C;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #444;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-      <img class="title-png" src="images/title.png">
-    </div>
-    
+        /* メニュー誘導セクションの共通スタイル (画面端まで広がる) */
+        .full-width-section {
+            padding: 120px 15px; 
+            margin: 80px 0; 
+            color: #F5F5F5;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            position: relative;
+        }
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1;
+        }
+        .menu-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px; 
+            margin: 0 auto;
+        }
+        .menu-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #C0A04C;
+            margin-bottom: 10px;
+        }
+        .menu-content p {
+            font-size: 16px;
+            color: #EAEAEA;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .menu-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #C0A04C;
+            color: #1A1A1A;
+            font-weight: 700;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+        .menu-button:hover {
+            background-color: #EAEAEA;
+            color: #C0A04C;
+        }
+        
+        /* メニュー誘導セクション - 個別設定 */
+        #food-menu {
+            background-image: url('menu-negima.jpg'); 
+        }
+        #drink-menu {
+            background-image: url('drink-background.jpg'); 
+        }
+
+        /* 宴会セクション */
+        #banquet {
+            background-color: #0D0D0D;
+            padding: 100px 0; 
+        }
+        #banquet .banquet-info {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #C0A04C;
+        }
+        #banquet .banquet-description {
+            margin-bottom: 30px;
+            color: #AAAAAA;
+        }
+
+        /* お知らせセクション (旧SNS) */
+        #news {
+            padding-top: 100px; 
+            padding-bottom: 100px; 
+        }
+        /* お知らせリストのスタイル */
+        .news-list {
+            max-width: 600px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px dashed #333;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-item p {
+            font-size: 14px;
+            color: #A0A0A0;
+            margin-bottom: 5px;
+        }
+        .news-item .news-date {
+            font-size: 12px;
+            color: #C0A04C;
+            margin-right: 15px;
+        }
 
 
+        /* 店舗情報セクション */
+        #access {
+            background-color: #0D0D0D;
+            padding: 100px 0; 
+        }
+        #access address {
+            font-style: normal;
+            margin-bottom: 20px;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #A0A0A0;
+        }
 
+        /* フッター */
+        footer {
+            background-color: #0D0D0D;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        footer p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* -------------------------------------- */
+        /* --- モバイル向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (max-width: 600px) {
+            /* ハンバーガーメニューのCSSは前回と同じ */
+            nav {
+                display: none;
+                position: absolute;
+                top: 51px;
+                left: 0;
+                width: 100%;
+                background-color: #1A1A1A;
+                border-top: 1px solid #333;
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+            nav.active {
+                display: block;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li a {
+                padding: 10px 0;
+                border-bottom: 1px dashed #333;
+                font-size: 16px;
+            }
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
 
-<!--挨拶-->
-<div class="greeting animation">
-  <div class="greeting-left">
-    ごあいさつ
-  </div>
-  <div class="greeting-right">
-   多くの方に上神谷のお米、野菜を食べてほしい。<br>
-   そんな思いからMORIFARMは生まれました。<br>
-   
-   堺市南区上神谷でお米、野菜を栽培する農業をスタートしました。<br>
-   きれいな空気、水という環境化では一味違う味を楽しめます。<br>
+            .menu-toggle {
+                display: block;
+            }
 
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            #hero h1 {
+                font-size: 24px;
+            }
+            .menu-content h3 {
+                font-size: 26px;
+            }
 
-  </div>
-  <img class="hiyoko" src="images/hiyoko.jpg">
-</div>
+            /* モバイル向けセクション余白調整 */
+            section {
+                padding: 80px 0; 
+            }
+            
+            /* #about の上部余白を調整 (100px -> 60px に変更) */
+            #about {
+                padding-top: 60px; /* 修正: 上部余白を調整 */
+            }
 
+            .full-width-section {
+                padding: 100px 15px; 
+                margin: 60px 0; 
+            }
+            #banquet, #news, #access {
+                 padding: 80px 0; 
+            }
 
-<div class="content-title animation">MORIFARMの野菜</div>
+            /* お知らせリストの左右余白は維持 */
+            .news-list {
+                padding: 0 15px; 
+                max-width: none; 
+            }
 
-<!--みかん-->
-    <div class="content animation">  
-      <div class="content-left">
-        <img class="content-png" src="images/ichigo.jpg">
-      </div>
-      <div class="content-right">
-       <p class="content-main">みかん</p>
-       <p class="content-suv">堺市南区上神谷でお米、野菜を栽培する農業をスタートしました。その後、ああああああああああああああああああああああああ
-        ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
-      </div>
-    </div>
-
-<!--米-->
-<div class="kome animation">  
-  <div class="kome-left">
-    <p class="kome-main">お米</p>
-    <p class="kome-suv">堺市南区上神谷でお米、野菜を栽培する農業をスタートしました。その後、ああああああああああああああああああああああああ
-      ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-    </p>
-  </div>
-  <div class="kome-right">
-    <img class="kome-png" src="images/ichigo.jpg">
-  </div>
-</div>
-
-<div class="yasai">
-  <p><a class="yasai-item" href="#">その他野菜はこちら</a></p>
-</div>
-
-
-<!--Twitter
-<a href="https://twitter.com/micanmori?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @micanmori</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<div class="Twitter">
- <a class="twitter-timeline" href="https://twitter.com/micanmori?ref_src=twsrc%5Etfw">Tweets by micanmori</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
--->
-
-
-<div class="map animation">  
-  <div class="map-left">
-    <p class="map-main">MORIFARM</p>
-    <p class="map-suv">住所：大阪府堺市南区畑245-1<br>
-                       電話：072-292-7474<br>
-                       営業時間：10時～15時<br>
-                       休日：水曜日   
-
-    </p>
-  </div>
-  <div class="map-right">
-    <iframe class="map-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.2129677618605!2d135.52291741511746!3d34.47212128049381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000d132acea6f77%3A0x7147bce1a14dd6b2!2z44CSNTkwLTAxMjQg5aSn6Ziq5bqc5aC65biC5Y2X5Yy655WR77yS77yU77yV4oiS77yR!5e0!3m2!1sja!2sjp!4v1646549290904!5m2!1sja!2sjp"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-</div>
-
-
-
-<footer>
-  <ul class="foot-item">
-    <li><a class="foot-link" href="#">お問い合わせ</a></li>
-    <li><a class="foot-link" href="#">プライバシーポリシー</a></li>
-    <li><a class="foot-link" href="#">特定商取引法に関する表示</a></li>
-  </ul>  
-
-  <p class="foot">
-    Copyright © 茶酒　きらら All Rights Reserved.<br>
-   【掲載の記事・写真・イラストなどの無断複写・転載を禁じます】
-  </p>
-</footer>
-
-
-
-    <script src="script.js"></script>
-  </body> 
-  </html>  
+            /* 宴会セクション内の説明文の左右余白は維持 */
+            #banquet .banquet-description {
+                padding: 0 15px; 
+                text-align: center;
+            }
+        }
+        
+        /* -------------------------------------- */
+        /* --- PC/タブレット向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (min-
