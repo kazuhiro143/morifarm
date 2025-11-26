@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店内 | 炭火焼鳥 Dining 晴レル屋</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
     <style>
         /* -------------------------------------- */
@@ -94,7 +94,7 @@
         #interior-hero {
             position: relative;
             height: 50vh;
-            /* **ここに店内の背景画像を掲載** */
+            /* **[要確認]** ヒーローセクションの背景画像パス */
             background: url('images/interior-hero-background.jpg') no-repeat center center/cover; 
             display: flex;
             justify-content: center;
@@ -115,7 +115,7 @@
             max-width: 700px;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.3);
-            text-align: center; /* 修正: ヒーローコンテンツ内のテキストを中央揃え */
+            text-align: center;
         }
         #interior-hero h1 {
             font-family: 'Playfair Display', serif;
@@ -134,7 +134,7 @@
         /* ギャラリーセクション */
         #gallery {
             padding: 60px 0;
-            text-align: center; /* セクション内のテキストを中央揃え */
+            text-align: center;
         }
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -147,11 +147,11 @@
         .section-subtitle {
             font-size: 14px;
             color: #888;
-            margin: 0 auto 40px auto; /* 修正: 中央寄せを確実にする */
+            margin: 0 auto 40px auto;
             border-bottom: 1px solid #444;
-            display: block; /* 修正: blockに変更し、margin:autoを有効化 */
+            display: block;
             padding-bottom: 5px;
-            width: fit-content; /* 内容の幅に合わせる */
+            width: fit-content;
         }
 
         /* カテゴリタイトル */
@@ -160,7 +160,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #F5F5F5;
-            text-align: left; /* カテゴリタイトル自体は左揃えを維持 */
+            text-align: left;
             margin-top: 30px;
             padding-bottom: 5px;
             border-bottom: 2px solid #C0A04C; 
@@ -170,7 +170,7 @@
         /* 画像アイテムのコンテナ */
         .image-container {
             margin-bottom: 40px;
-            text-align: left; /* 画像下の説明文を左揃えにするため、コンテナのテキスト揃えを変更 */
+            text-align: left;
         }
 
         /* 個別の画像アイテム */
@@ -194,7 +194,7 @@
             z-index: 10;
         }
         
-        /* 仮の画像クラス */
+        /* 仮の画像クラス - [要確認] 画像ファイル名と拡張子が正しいか確認してください */
         .image-item.private-room { background-image: url('images/room-private.jpg'); } 
         .image-item.counter-seat { background-image: url('images/room-counter.jpg'); } 
         .image-item.table-seat { background-image: url('images/room-table.jpg'); } 
@@ -269,11 +269,17 @@
             #interior-hero h1 {
                 font-size: 48px;
             }
+            
             /* PCでは画像を左右に配置するレイアウト */
-            .image-grid {
+            .image-grid-wrapper {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 20px;
+                gap: 40px 20px; 
+                margin-top: 20px;
+            }
+            
+            .image-container { 
+                 margin-bottom: 0; 
             }
             .image-item {
                 height: 300px;
@@ -320,46 +326,50 @@
         <h2 class="section-title">THE INTERIOR</h2>
         <p class="section-subtitle">用途に合わせて選べる、様々なタイプのお席</p>
 
-        <div class="image-container">
-            <div class="interior-category-title">◆ 個室 （Private Room）</div>
-            <div class="image-item private-room">
-                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[個室の画像]</p>
-            </div>
-            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
-                接待やお祝いの席に最適な、4名様から最大14名様までご利用いただける完全個室をご用意しております。
-            </p>
-        </div>
+        <div class="image-grid-wrapper">
 
-        <div class="image-container">
-            <div class="interior-category-title">◆ カウンター席 （Counter）</div>
-            <div class="image-item counter-seat">
-                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[カウンター席の画像]</p>
+            <div class="image-container">
+                <div class="interior-category-title">◆ 個室 （Private Room）</div>
+                <div class="image-item private-room">
+                    <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[個室の画像]</p>
+                </div>
+                <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                    接待やお祝いの席に最適な、4名様から最大14名様までご利用いただける完全個室をご用意しております。
+                </p>
             </div>
-            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
-                目の前で繰り広げられる職人の技を堪能できる特等席。お一人様やデートに最適です。
-            </p>
-        </div>
-        
-        <div class="image-container">
-            <div class="interior-category-title">◆ テーブル席 （Table Seat）</div>
-            <div class="image-item table-seat">
-                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[テーブル席の画像]</p>
-            </div>
-            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
-                ご友人やご家族とのカジュアルな会食に。広々とした落ち着いた空間です。
-            </p>
-        </div>
 
-        <div class="image-container">
-            <div class="interior-category-title">◆ 宴会用スペース （Banquet）</div>
-            <div class="image-item banquet-room">
-                <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[宴会用スペースの画像]</p>
+            <div class="image-container">
+                <div class="interior-category-title">◆ カウンター席 （Counter）</div>
+                <div class="image-item counter-seat">
+                    <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[カウンター席の画像]</p>
+                </div>
+                <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                    目の前で繰り広げられる職人の技を堪能できる特等席。お一人様やデートに最適です。
+                </p>
             </div>
-            <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
-                最大14名様まで対応可能な個室、またはテーブルを繋げた団体利用が可能です。
-            </p>
+            
+            <div class="image-container">
+                <div class="interior-category-title">◆ テーブル席 （Table Seat）</div>
+                <div class="image-item table-seat">
+                    <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[テーブル席の画像]</p>
+                </div>
+                <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                    ご友人やご家族とのカジュアルな会食に。広々とした落ち着いた空間です。
+                </p>
+            </div>
+
+            <div class="image-container">
+                <div class="interior-category-title">◆ 宴会用スペース （Banquet）</div>
+                <div class="image-item banquet-room">
+                    <p style="color: #C0A04C; background-color: rgba(0,0,0,0.6); padding: 5px 10px;">[宴会用スペースの画像]</p>
+                </div>
+                <p style="text-align: left; font-size: 14px; color: #A0A0A0; margin-top: 10px;">
+                    最大14名様まで対応可能な個室、またはテーブルを繋げた団体利用が可能です。
+                </p>
+            </div>
+
         </div>
-    </section>
+        </section>
 
     <footer>
         <div class="container">
