@@ -369,4 +369,155 @@
         /* -------------------------------------- */
         /* --- PC/タブレット向けレスポンシブ対応 --- */
         /* -------------------------------------- */
-        @media (min-
+        @media (min-width: 601px) {
+            #hero {
+                height: 100vh;
+            }
+            #hero h1 {
+                font-size: 56px;
+            }
+            nav {
+                display: block !important;
+            }
+            .full-width-section {
+                padding: 120px 30px; 
+            }
+            .menu-content h3 {
+                font-size: 40px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#">炭火焼鳥 Dining 晴レル屋</a>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#hero">ホーム</a></li>
+                    <li><a href="#about">こだわり</a></li>
+                    <li><a href="menu_food.html">お品書き</a></li> 
+                    <li><a href="menu_drink.html">お飲み物</a></li>
+                    <li><a href="interior.html">店内</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>炭火焼鳥 Dining 晴レル屋</h1>
+            <p>洗練された大人の隠れ家</p>
+            </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">こだわり</h2>
+        <p class="section-subtitle">素材と技、全てに妥協しない</p>
+        <p>
+            少しずつ継足し手間ひまかけてつくった自家製タレ、又は甘みたっぷりの自ら調合した塩を使用。串はもちろんスタッフみんなでお客様に喜んでもらいたい思いで1本1本手打ちしております。
+        </p>
+    </section>
+
+    <section id="food-menu" class="full-width-section">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <h3>至高の焼鳥と一品料理</h3>
+            <p>
+                毎日店主が厳選する極上の素材を、紀州備長炭で一串一串丁寧に焼き上げます。
+                深い香りと肉本来の旨味を最大限に引き出した炭火焼鳥と、季節の素材を活かしたこだわりの一品料理を心ゆくまでお楽しみください。
+            </p>
+            <a href="menu_food.html" class="menu-button">お品書きはこちら</a>
+        </div>
+    </section>
+
+    <section id="drink-menu" class="full-width-section">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <h3>厳選された美酒の数々</h3>
+            <p>
+                焼鳥の繊細な風味を引き立てる、ソムリエ厳選のワインや全国から集めた希少な日本酒を豊富にご用意しております。
+                お客様の一串に寄り添う最高の一杯を、専門知識を持ったスタッフがご提案いたします。
+            </p>
+            <a href="menu_drink.html" class="menu-button">お飲み物はこちら</a>
+        </div>
+    </section>
+
+    <section id="banquet" class="container">
+        <h2 class="section-title">店内</h2>
+        <p class="section-subtitle">大切なお集まりに</p>
+        <p class="banquet-info">
+            **最大14名様まで収容可能！**
+        </p>
+        <p class="banquet-description">
+            ■家族での集まりや女子会に
+用途に合わせた個室を６部屋用意しております。お子様連れのお客様も周りを気にせずゆったりお寛ぎ頂けます。
+<br><br>
+■デートや記念日のご利用にぜひ♪
+２名個室もご用意がございます。ケーキの持ち込み可★お祝いのサプライズ対応お手伝い致しますので、お気軽にご相談ください。
+        </p>
+        <a href="interior.html" class="menu-button" style="background-color: #333; color: #C0A04C; border: 1px solid #C0A04C;">店内はこちら</a> </section>
+
+    <section id="news" class="container">
+        <h2 class="section-title">NEWS</h2>
+        <p class="section-subtitle">最新のお知らせ</p>
+        
+        <div class="news-list">
+            <div class="news-item">
+                <p>
+<span class="news-date">2025.11.26</span>
+                    ホームページを公開いたしました。今後とも炭火焼鳥 Dining 晴レル屋をよろしくお願いいたします。
+                </p>
+            </div>
+            <div class="news-item">
+                <p>
+                    <span class="news-date">2025.11.01</span>
+                    年末年始の営業時間についてのお知らせを掲載いたしました。詳細はお電話にてお問い合わせください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="access" style="background-color: #0D0D0D;">
+        <div class="container">
+            <h2 class="section-title">ACCESS</h2>
+            <p class="section-subtitle">ご予約・お問い合わせ</p>
+            <address>
+                〒599-8236 大阪府堺市中区深井沢町3126-5 グランドール深井 1階<br>
+                TEL: <a href="tel:072-278-0990">072-278-0990</a><br>
+                営業時間: 17:00 - 24:00 (L.O. 23:00)<br>
+                定休日: 火曜日
+            </address>
+            <div class="map-placeholder">ここにGoogleマップ埋め込む
+            </div>
+            <p style="margin-top: 30px; font-size: 14px;">
+                <a href="tel:03-1234-5678" style="padding: 10px 20px; border: 1px solid #C0A04C; display: inline-block;">お電話でのご予約・お問い合わせ</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sumibiyakitori Dining Hareruya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').onclick = function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
+        
