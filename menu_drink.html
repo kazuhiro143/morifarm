@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お飲み物 | 炭火焼鳥 Dining 晴レル屋</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+        /* -------------------------------------- */
+        /* --- 2. CSS コード (共通スタイル) --- */
+        /* -------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: #EAEAEA;
+            background-color: #1A1A1A;
+            line-height: 1.6;
+        }
+        a {
+            color: #C0A04C;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #EAEAEA;
+        }
+        
+        /* コンテナ */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #0D0D0D;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #C0A04C;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            display: block;
+        }
+        
+        /* ナビゲーション - デスクトップ用 */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 400;
+            padding: 5px 0;
+            display: block;
+        }
+
+        /* ハンバーガーメニューアイコン（モバイルでのみ表示） */
+        .menu-toggle {
+            display: none;
+            color: #C0A04C;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* -------------------------------------- */
+        /* --- 3. メニューページ専用スタイル --- */
+        /* -------------------------------------- */
+
+        /* ヒーロー（背景画像とこだわり）セクション */
+        #menu-hero {
+            position: relative;
+            height: 50vh;
+            /* **ここにお酒の背景画像を掲載** */
+            background: url('drink-hero-background.jpg') no-repeat center center/cover; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+        .hero-content {
+            z-index: 10;
+            max-width: 700px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center; /* 修正: ヒーローコンテンツ内のテキストを中央揃え */
+        }
+        #menu-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #C0A04C;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        #menu-hero p {
+            font-size: 16px;
+            color: #EAEAEA;
+            line-height: 1.8;
+        }
+
+        /* メニュー一覧セクション */
+        #menu-list {
+            padding: 60px 0;
+            text-align: center; /* セクション内のテキストを中央揃え */
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #C0A04C;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin: 0 auto 40px auto; /* 中央寄せを確実にする */
+            border-bottom: 1px solid #444;
+            display: block; /* blockに変更し、margin:autoを有効化 */
+            padding-bottom: 5px;
+            width: fit-content; /* 内容の幅に合わせる */
+        }
+
+        /* カテゴリタイトル */
+        .menu-category-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #F5F5F5;
+            text-align: left;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #C0A04C; 
+            margin-bottom: 20px;
+        }
+
+        /* メニューアイテム (焼き鳥ページと同じスタイル) */
+        .menu-item {
+            text-align: left;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #333;
+            min-height: 80px; 
+            background-color: #222; 
+            background-position: right center; 
+            background-size: 80px auto; 
+            background-repeat: no-repeat;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); 
+            z-index: 1;
+        }
+
+        .menu-name-wrap, .menu-price {
+            position: relative; 
+            z-index: 2;
+        }
+
+        .menu-name-wrap h3 {
+            font-size: 16px;
+            color: #EAEAEA;
+            margin-bottom: 2px;
+        }
+        .menu-name-wrap p {
+            font-size: 12px;
+            color: #A0A0A0;
+        }
+        .menu-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: #C0A04C;
+            font-weight: 700;
+        }
+
+        /* 仮のメニュー画像クラス */
+        .sake-a { background-image: url('sake-a.jpg'); } 
+        .wine-b { background-image: url('wine-b.jpg'); } 
+        .beer-c { background-image: url('beer-c.jpg'); } 
+        .sake-b { background-image: url('sake-b.jpg'); } 
+        .wine-a { background-image: url('wine-a.jpg'); } 
+        .sake-c { background-image: url('sake-c.jpg'); } 
+
+
+        /* フッター (ホームと共通) */
+        footer {
+            background-color: #0D0D0D;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        footer p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* -------------------------------------- */
+        /* --- モバイル向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (max-width: 600px) {
+            /* ハンバーガーメニューの表示 */
+            nav {
+                display: none;
+                position: absolute;
+                top: 51px;
+                left: 0;
+                width: 100%;
+                background-color: #1A1A1A;
+                border-top: 1px solid #333;
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+            nav.active {
+                display: block; 
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li a {
+                padding: 10px 0;
+                border-bottom: 1px dashed #333;
+                font-size: 16px;
+            }
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block; 
+            }
+
+            .header-content {
+                padding: 0 15px;
+            }
+        }
+        
+        /* -------------------------------------- */
+        /* --- PC/タブレット向けレスポンシブ対応 --- */
+        /* -------------------------------------- */
+        @media (min-width: 601px) {
+            nav {
+                display: block !important;
+            }
+            #menu-hero h1 {
+                font-size: 48px;
+            }
+            /* PCではメニューを2列表示 */
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">炭火焼鳥 Dining 晴レル屋</a>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html#hero">ホーム</a></li>
+                    <li><a href="index.html#about">こだわり</a></li>
+                    <li><a href="menu_food.html">お品書き</a></li> 
+                    <li><a href="#" style="color: #F5F5F5; border-bottom: 2px solid #C0A04C;">お飲み物</a></li>
+                    <li><a href="interior.html">店内</a></li>
+                </ul>
+                </nav>
+        </div>
+    </header>
+
+    <section id="menu-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>厳選された美酒の数々</h1>
+            <p>
+                ソムリエが厳選したワイン、蔵元直送の日本酒、季節の果実酒など、焼鳥の深い味わいを引き立てるラインナップを豊富に取り揃えております。
+                お客様の一串一串に合わせた最高の一杯をご提案いたします。
+            </p>
+        </div>
+    </section>
+
+    <section id="menu-list" class="container">
+        <h2 class="section-title">DRINK MENU</h2>
+        <p class="section-subtitle">焼鳥とのマリアージュを楽しむ</p>
+
+        <div class="menu-category-title">◆ 日本酒 （全国の銘酒）</div>
+        <div class="menu-grid">
+            <div class="menu-item sake-a">
+                <div class="menu-name-wrap">
+                    <h3>本日の地酒</h3>
+                    <p>店主が厳選した、季節の地酒をご提供いたします。</p>
+                </div>
+                <div class="menu-price">時価</div>
+            </div>
+            <div class="menu-item sake-c">
+                <div class="menu-name-wrap">
+                    <h3>獺祭 純米大吟醸</h3>
+                    <p>華やかな香りと、きめ細やかでふくよかな味わい。</p>
+                </div>
+                <div class="menu-price">¥1,200 / 1合</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>新政 No.6 S-type</h3>
+                    <p>フルーティーで透明感のあるモダンな味わい。</p>
+                </div>
+                <div class="menu-price">¥1,500 / 1合</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>久保田 千寿 吟醸</h3>
+                    <p>飲み飽きしない上品でやわらかな口当たり。</p>
+                </div>
+                <div class="menu-price">¥980 / 1合</div>
+            </div>
+            <div class="menu-item sake-b">
+                <div class="menu-name-wrap">
+                    <h3>飛露喜 特別純米</h3>
+                    <p>米の旨味とキレの良さが特徴の福島の名酒。</p>
+                </div>
+                <div class="menu-price">¥1,350 / 1合</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>十四代 純米吟醸</h3>
+                    <p>入手困難な幻の銘酒。華やかな香りと奥深い味わい。</p>
+                </div>
+                <div class="menu-price">時価</div>
+            </div>
+        </div>
+
+        <div class="menu-category-title">◆ ワイン （赤・白・泡）</div>
+        <div class="menu-grid">
+            <div class="menu-item wine-b">
+                <div class="menu-name-wrap">
+                    <h3>おすすめグラスワイン（赤/白）</h3>
+                    <p>焼鳥に合うワインを日替わりでご用意しております。</p>
+                </div>
+                <div class="menu-price">¥780〜</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>甲州スパークリングワイン</h3>
+                    <p>和食にも合う、繊細でドライな口当たりの国産泡。</p>
+                </div>
+                <div class="menu-price">¥4,500 / Bottle</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>ブルゴーニュ ピノ・ノワール</h3>
+                    <p>地鶏の旨味を引き立てる、軽やかでエレガントな赤ワイン。</p>
+                </div>
+                <div class="menu-price">¥6,500 / Bottle</div>
+            </div>
+            <div class="menu-item wine-a">
+                <div class="menu-name-wrap">
+                    <h3>シャブリ（Chablis）</h3>
+                    <p>すっきりとした酸味とミネラル感。魚介系焼鳥と好相性。</p>
+                </div>
+                <div class="menu-price">¥5,800 / Bottle</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>キャンティ（Chianti）</h3>
+                    <p>チェリーのような果実味と柔らかなタンニン。タレ系焼鳥と。</p>
+                </div>
+                <div class="menu-price">¥5,500 / Bottle</div>
+            </div>
+        </div>
+
+        <div class="menu-category-title">◆ ビール / サワー / ハイボール</div>
+        <div class="menu-grid">
+            <div class="menu-item beer-c">
+                <div class="menu-name-wrap">
+                    <h3>生ビール (サッポロ黒ラベル)</h3>
+                    <p>最初の一杯に最適な、喉越し爽やかな定番ビール。</p>
+                </div>
+                <div class="menu-price">¥650</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>知多 風香るハイボール</h3>
+                    <p>軽やかな味わいで、和食に合うシングルグレーンウイスキー。</p>
+                </div>
+                <div class="menu-price">¥700</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>レモンサワー / 柚子サワー</h3>
+                    <p>定番から季節のサワーまで豊富にご用意。</p>
+                </div>
+                <div class="menu-price">¥580</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>梅酒 / 果実酒</h3>
+                    <p>濃厚な梅酒や、季節の果実を使った限定酒。</p>
+                </div>
+                <div class="menu-price">¥600〜</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>翠ジンソーダ</h3>
+                    <p>和食に合う、清々しい香りのジンソーダ。</p>
+                </div>
+                <div class="menu-price">¥600</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-name-wrap">
+                    <h3>ノンアルコールビール</h3>
+                    <p>お酒を飲めない方にも嬉しい、本格的な味わい。</p>
+                </div>
+                <div class="menu-price">¥500</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sumibiyakitori Dining Hareruya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').onclick = function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
