@@ -214,6 +214,42 @@
         }
 
         /* -------------------------------------- */
+        /* --- 情報詳細セクションの修正スタイル --- */
+        /* -------------------------------------- */
+        #info-details table th {
+            /* 項目名（左側）のカラム幅を調整し、見やすくする */
+            width: 140px; /* PC/タブレットサイズではこの幅を適用 */
+            padding: 8px 15px 8px 0;
+            border-bottom: 1px solid #333;
+            text-align: left;
+            color: #EAEAEA;
+            font-weight: 700;
+            vertical-align: top; /* 上端揃えに */
+        }
+        #info-details table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            text-align: left;
+            color: #A0A0A0;
+        }
+        #info-details .info-group {
+            margin-top: 20px; /* グループ間の上下の余白を少し詰める */
+        }
+        #info-details .interior-category-title {
+            margin-bottom: 10px; /* 小見出しの下の余白を詰める */
+            margin-top: 30px; 
+            font-size: 20px;
+        }
+        #info-details ul {
+            padding-left: 20px;
+        }
+        #info-details ul li {
+            margin-bottom: 5px; /* リストの余白を詰める */
+        }
+        #info-details hr {
+            margin: 30px 0; /* 区切り線の上下の余白を詰める */
+        }
+        /* -------------------------------------- */
         /* --- モバイル向けレスポンシブ対応 --- */
         /* -------------------------------------- */
         @media (max-width: 600px) {
@@ -257,6 +293,11 @@
             .header-content {
                 padding: 0 15px;
             }
+
+            /* モバイルではテーブルの項目名（左側）の幅をさらに狭くし、情報が折り返さないようにする */
+            #info-details table th {
+                width: 100px; /* モバイル向けにさらに狭く */
+            }
         }
         
         /* -------------------------------------- */
@@ -279,7 +320,7 @@
             }
             
             .image-container { 
-                 margin-bottom: 0; 
+                margin-bottom: 0; 
             }
             .image-item {
                 height: 300px;
@@ -365,7 +406,74 @@
             </div>
 
         </div>
-        </section>
+    </section>
+
+    <section id="info-details" class="container" style="padding: 40px 0 60px 0;">
+        
+        <h2 class="section-title" style="margin-bottom: 5px; margin-top: 0;">COVID-19 SAFETY</h2>
+        <p class="section-subtitle">感染症対策</p>
+
+        <div style="margin-bottom: 30px;">
+            <h3 class="interior-category-title">■ お客様への取り組み</h3>
+            <ul style="list-style: none; padding-left: 20px; font-size: 14px; color: #A0A0A0;">
+                <li style="margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>**入店時:** 体調不良の方への自粛呼びかけあり、店内に消毒液設置</li>
+                <li style="margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>**客席へのご案内:** カウンター席に仕切りあり、他グループとの相席禁止</li>
+                <li style="margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>**テーブル/カウンターサービス:** オーダー時にお客様と一定間隔保持</li>
+                <li style="margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>**会計処理:** 非接触型決済あり</li>
+            </ul>
+            <h3 class="interior-category-title" style="margin-top: 20px;">■ 従業員の安全衛生管理</h3>
+            <p style="padding-left: 20px; font-size: 14px; color: #A0A0A0;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>マスク着用、頻繁な手洗い</p>
+            <h3 class="interior-category-title" style="margin-top: 20px;">■ 店舗の衛生管理</h3>
+            <p style="padding-left: 20px; font-size: 14px; color: #A0A0A0;"><i class="fas fa-check-circle" style="color: #C0A04C; margin-right: 8px;"></i>換気設備の設置と換気、多数の人が触れる箇所の消毒</p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed #444; margin: 30px 0;">
+
+        <h2 class="section-title" style="margin-bottom: 5px;">SEATING & AMENITIES</h2>
+        <p class="section-subtitle">お席・設備情報</p>
+        
+        <div class="info-group">
+            <h3 class="interior-category-title">お席</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <tr><th>総席数</th><td>60席 (テーブル・こたつ 6名×2、4名×7 / 個室×6卓 / カウンター6席)</td></tr>
+                <tr><th>個室</th><td>あり (9名、4名、2名様用の個室)</td></tr>
+                <tr><th>座敷</th><td>あり (9名、4名、2名様用の個室)</td></tr>
+                <tr><th>掘りごたつ</th><td>あり (12名様迄入れる掘りごたつ個室)</td></tr>
+                <tr><th>カウンター</th><td>あり (カウンター×6席)</td></tr>
+                <tr><th>ソファー / テラス</th><td>なし</td></tr>
+                <tr><th>貸切</th><td>貸切不可 (詳細は店舗まで問い合わせ下さい)</td></tr>
+            </table>
+        </div>
+
+        <div class="info-group">
+            <h3 class="interior-category-title">たばこ</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <tr><th>禁煙・喫煙</th><td>**全席禁煙**</td></tr>
+                <tr><th>喫煙専用室</th><td>なし</td></tr>
+            </table>
+        </div>
+
+        <div class="info-group">
+            <h3 class="interior-category-title">設備</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <tr><th>Wi-Fi</th><td>あり (全部の機種ご利用可)</td></tr>
+                <tr><th>バリアフリー</th><td>なし (車椅子のお客様はテーブル席にご案内致します)</td></tr>
+                <tr><th>駐車場</th><td>あり (お店のすぐ近くに専用駐車場があります。最大4台OK)</td></tr>
+            </table>
+        </div>
+        
+        <div class="info-group">
+            <h3 class="interior-category-title">その他</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <tr><th>飲み放題</th><td>あり (コースに含まれます)</td></tr>
+                <tr><th>食べ放題</th><td>なし (ご了承下さい)</td></tr>
+                <tr><th>お酒</th><td>カクテル充実、焼酎充実、日本酒充実</td></tr>
+                <tr><th>ウェディングパーティー・二次会</th><td>不可</td></tr>
+                <tr><th>備考</th><td>週末の混雑時はお席時間3時間とさせていただきます。</td></tr>
+            </table>
+        </div>
+
+    </section>
 
     <footer>
         <div class="container">
