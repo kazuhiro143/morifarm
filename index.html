@@ -20,7 +20,7 @@
         body {
             font-family: 'Noto Serif JP', serif;
             color: #EAEAEA;
-            background-color: #1A1A1A;
+            background-color: #0D0D0D;
             line-height: 1.6;
         }
         a {
@@ -126,7 +126,7 @@
         
         /* セクション共通 - PC版は十分な余白 (100px) を維持 */
         section {
-            padding: 100px 0; 
+            padding: 130px 0; 
             text-align: center;
         }
         .section-title {
@@ -146,15 +146,19 @@
             padding-bottom: 5px;
         }
 
-        /* 修正 2: 背景色をbodyと統一 */
+        /* 背景色をbodyと統一 */
         #about {
-            background-color: #1A1A1A; 
+            background-color: #0D0D0D;
+            /* 修正点: 上下余白を増やす */
+            padding-top: 80px; 
+            padding-bottom: 80px;
         }
 
         /* メニュー誘導セクションの共通スタイル (画面端まで広がる) */
         .full-width-section {
             padding: 120px 15px; 
-            margin: 80px 0; 
+            /* 修正点: セクション間のマージンを減らす */
+            margin: 60px 0; 
             color: #F5F5F5;
             background-position: center center;
             background-size: cover;
@@ -206,32 +210,39 @@
         
         /* メニュー誘導セクション - 個別設定 */
         #food-menu {
-            background-image: url('images/menu-negima.jpg'); 
+            background-image: url('images/menu-negima.jpg');
         }
         #drink-menu {
-            background-image: url('images/drink-background.jpg'); 
+            background-image: url('images/drink-background.jpg');
+            background-position: center center; 
         }
 
-        /* 宴会セクション */
+        /* 宴会セクション - full-width-section に構造変更 */
         #banquet {
-            background-color: #0D0D0D;
-            padding: 100px 0; 
+            background-image: url('images/interior-background.jpg'); /* 店内の背景画像を追加 */
         }
+        /* full-width-section に変更したため、タイトルとサブタイトルの色を調整 */
+        #banquet .section-title {
+            color: #C0A04C; /* タイトル色を金色に強制 */
+        }
+        #banquet .section-subtitle {
+            color: #888; /* サブタイトル色を灰色に強制 */
+        }
+        /* 宴会セクションの内容のスタイルを drink-menu の p に合わせる */
         #banquet .banquet-info {
-            font-size: 16px;
             margin-bottom: 25px;
-            color: #C0A04C;
+            color: #EAEAEA; 
         }
         #banquet .banquet-description {
             margin-bottom: 30px;
-            color: #AAAAAA;
         }
 
         /* お知らせセクション (旧SNS) */
         #news {
+            /* 修正点: 上部の余白を減らす */
             padding-top: 100px; 
-            padding-bottom: 100px; 
-            background-color: #1A1A1A; /* 修正 2: 背景色をbodyと統一 */
+            padding-bottom: 130px; 
+            background-color: #1A1A1A; 
         }
         /* お知らせリストのスタイル */
         .news-list {
@@ -261,24 +272,35 @@
         /* 店舗情報セクション */
         #access {
             background-color: #0D0D0D;
-            padding: 100px 0; 
+            padding: 130px 0; 
         }
         #access address {
             font-style: normal;
             margin-bottom: 20px;
         }
-        .map-placeholder {
+        
+        /* -------------------------------------- */
+        /* --- Google Map 埋め込み用スタイル --- */
+        /* -------------------------------------- */
+        .map-container {
+            position: relative;
             width: 100%;
-            /* マップを埋め込むので、ダミーテキストに関するスタイルを削除・調整 */
-            height: 200px; /* 必要に応じて調整 */
-            background-color: #333; /* マップ読み込み中の色 */
-            display: flex; /* iframeの表示を調整するために維持 */
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            color: #A0A0A0;
-            height: 450px; /* マップのiframeの高さに合わせて調整 */
+            /* マップの縦横比 (450/600 = 75%) を維持 */
+            padding-bottom: 75%; 
+            height: 0;
+            overflow: hidden;
+            margin-top: 30px;
         }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important; 
+            height: 100% !important;
+            border: 0;
+        }
+        /* -------------------------------------- */
 
         /* フッター */
         footer {
@@ -290,6 +312,37 @@
         footer p {
             font-size: 12px;
             color: #666;
+        }
+
+        /* -------------------------------------- */
+        /* --- アニメーション関連スタイル --- */
+        /* -------------------------------------- */
+
+        /* アニメーションの定義 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* 20px下から開始 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* アニメーションを適用する基本クラス */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            /* 要素ごとに遅延を設定できるようにする */
+            transition-delay: var(--delay, 0s); 
+        }
+
+        /* アニメーションを発火させるクラス */
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* -------------------------------------- */
@@ -346,15 +399,21 @@
 
             /* モバイル向けセクション余白調整 */
             section {
-                padding: 80px 0; 
+                padding: 100px 0; 
             }
             
             .full-width-section {
                 padding: 100px 15px; 
                 margin: 60px 0; 
             }
-            #banquet, #news, #access {
-                 padding: 80px 0; 
+            #news, #access { 
+                 padding: 100px 0; 
+            }
+            
+            /* 修正点: モバイル版 #about の余白 */
+            #about {
+                padding-top: 120px;
+                padding-bottom: 120px;
             }
 
             /* お知らせリストの左右余白は維持 */
@@ -383,9 +442,19 @@
             nav {
                 display: block !important;
             }
+            
+            /* PC画面で .full-width-section の左右に20%の余白を設ける設定を維持 */
             .full-width-section {
-                padding: 120px 30px; 
+                padding: 200px 10%; 
+                /* セクション間のマージンを減らす */
+                margin: 60px auto; 
+                width: 80%;
+                /* 中央寄せを確実にするため */
+                margin-left: auto;
+                margin-right: auto;
             }
+            
+            /* ここは元の設定に戻します */
             .menu-content h3 {
                 font-size: 40px;
             }
@@ -426,63 +495,72 @@
     </section>
 
     <section id="about" class="container">
-        <h2 class="section-title">こだわり</h2>
-        <p class="section-subtitle">素材と技、全てに妥協しない</p>
-        <p>
-            少しずつ継足し手間ひまかけてつくった自家製タレ、又は甘みたっぷりの自ら調合した塩を使用。串はもちろんスタッフみんなでお客様に喜んでもらいたい思いで1本1本手打ちしております。
+        <h2 class="section-title fade-in-up" style="--delay: 0s;">こだわり</h2>
+        <p class="section-subtitle fade-in-up" style="--delay: 0.1s;">素材と技、全てに妥協しない</p>
+        
+        <p class="fade-in-up" style="--delay: 0.2s;">
+            厳選した鶏肉を、一本一本心を込めて手打ち。秘伝の自家製タレ、または素材の味を引き立てる自家調合の塩で、紀州備長炭を使い丁寧に焼き上げます。職人の技が光る、至高の一串をご堪能ください。
+        </p>
+        
+        <p class="fade-in-up" style="--delay: 0.3s;">
+            落ち着いた和モダンな空間と、用途に合わせて選べる6部屋の個室をご用意。ご家族連れ、ご友人同士、デートや接待まで、お客様一人ひとりにゆったりと心からお楽しみいただけるおもてなしをいたします。
         </p>
     </section>
 
     <section id="food-menu" class="full-width-section">
         <div class="menu-overlay"></div>
         <div class="menu-content">
-            <h3>至高の焼鳥と一品料理</h3>
-            <p>
+            <h3 class="fade-in-up" style="--delay: 0s;">至高の焼鳥と一品料理</h3>
+            <p class="fade-in-up" style="--delay: 0.1s;">
                 毎日店主が厳選する極上の素材を、紀州備長炭で一串一串丁寧に焼き上げます。
                 深い香りと肉本来の旨味を最大限に引き出した炭火焼鳥と、季節の素材を活かしたこだわりの一品料理を心ゆくまでお楽しみください。
             </p>
-            <a href="menu_food.html" class="menu-button">お品書きはこちら</a>
+            <a href="menu_food.html" class="menu-button fade-in-up" style="--delay: 0.2s;">お品書きはこちら</a>
         </div>
     </section>
 
     <section id="drink-menu" class="full-width-section">
         <div class="menu-overlay"></div>
         <div class="menu-content">
-            <h3>厳選された美酒の数々</h3>
-            <p>
+            <h3 class="fade-in-up" style="--delay: 0s;">厳選された美酒の数々</h3>
+            <p class="fade-in-up" style="--delay: 0.1s;">
                 焼鳥の繊細な風味を引き立てる、ソムリエ厳選のワインや全国から集めた希少な日本酒を豊富にご用意しております。
                 お客様の一串に寄り添う最高の一杯を、専門知識を持ったスタッフがご提案いたします。
             </p>
-            <a href="menu_drink.html" class="menu-button">お飲み物はこちら</a>
+            <a href="menu_drink.html" class="menu-button fade-in-up" style="--delay: 0.2s;">お飲み物はこちら</a>
         </div>
     </section>
 
-    <section id="banquet" class="container">
-        <h2 class="section-title">店内</h2>
-        <p class="section-subtitle">大切なお集まりに</p>
-        <p class="banquet-info">
-            **最大14名様まで収容可能！**
-        </p>
-        <p class="banquet-description">
-            ■家族での集まりや女子会に用途に合わせた個室を６部屋用意しております。<br>お子様連れのお客様も周りを気にせずゆったりお寛ぎ頂けます。
-<br><br>
-■デートや記念日のご利用にぜひ♪２名個室もご用意がございます。
-            <br>★お祝いのサプライズ対応お手伝い致しますので、お気軽にご相談ください。
-        </p>
-        <a href="interior.html" class="menu-button" style="background-color: #333; color: #C0A04C; border: 1px solid #C0A04C;">店内はこちら</a> </section>
+    <section id="banquet" class="full-width-section">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <h2 class="section-title fade-in-up" style="--delay: 0s;">店内</h2>
+            <p class="section-subtitle fade-in-up" style="--delay: 0.1s;">大切なお集まりに</p>
+            <p class="banquet-info fade-in-up" style="--delay: 0.2s;">
+                <strong>最大14名様まで収容可能！</strong>
+            </p>
+            <p class="banquet-description fade-in-up" style="--delay: 0.3s;">
+                ■家族での集まりや女子会に用途に合わせた個室を６部屋用意しております。<br>お子様連れのお客様も周りを気にせずゆったりお寛ぎ頂けます。
+                <br><br>
+                ■デートや記念日のご利用にぜひ♪２名個室もご用意がございます。
+                <br>★お祝いのサプライズ対応お手伝い致しますので、お気軽にご相談ください。
+            </p>
+            <a href="interior.html" class="menu-button fade-in-up" style="background-color: #333; color: #C0A04C; border: 1px solid #C0A04C; --delay: 0.4s;">店内はこちら</a> 
+        </div>
+    </section>
 
     <section id="news" class="container">
-        <h2 class="section-title">NEWS</h2>
-        <p class="section-subtitle">最新のお知らせ</p>
+        <h2 class="section-title fade-in-up" style="--delay: 0s;">NEWS</h2>
+        <p class="section-subtitle fade-in-up" style="--delay: 0.1s;">最新のお知らせ</p>
         
         <div class="news-list">
-            <div class="news-item">
+            <div class="news-item fade-in-up" style="--delay: 0.2s;">
                 <p>
-<span class="news-date">2025.11.26</span>
+                    <span class="news-date">2025.11.26</span>
                     ホームページを公開いたしました。今後とも炭火焼鳥 Dining 晴レル屋をよろしくお願いいたします。
                 </p>
             </div>
-            <div class="news-item">
+            <div class="news-item fade-in-up" style="--delay: 0.3s;">
                 <p>
                     <span class="news-date">2025.11.01</span>
                     年末年始の営業時間についてのお知らせを掲載いたしました。詳細はお電話にてお問い合わせください。
@@ -493,22 +571,22 @@
 
     <section id="access" style="background-color: #0D0D0D;">
         <div class="container">
-            <h2 class="section-title">ACCESS</h2>
-            <p class="section-subtitle">ご予約・お問い合わせ</p>
+            <h2 class="section-title fade-in-up" style="--delay: 0s;">ACCESS</h2>
+            <p class="section-subtitle fade-in-up" style="--delay: 0.1s;">ご予約・お問い合わせ</p>
             
-            <address>
+            <address class="fade-in-up" style="--delay: 0.2s;">
                 〒599-8236 大阪府堺市中区深井沢町3126-5 グランドール深井 1階<br>
                 TEL: <a href="tel:072-278-0990">072-278-0990</a><br>
                 営業時間: 17:00 - 24:00 (L.O. 23:00)<br>
                 定休日: 火曜日
             </address>
             
-            <div class="map-placeholder">
+            <div class="map-container fade-in-up" style="--delay: 0.3s;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.053154215848!2d135.50294717546875!3d34.60228347295837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000c0f89053229b%3A0x6b4f74d0e53a2531!2z5rC654-H6IuF6K6hIERpbmluZyDpsb_jg5Pjgrs!5e0!3m2!1sja!2sjp!4v1701108257000!5m2!1sja!2sjp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             
             <p style="margin-top: 30px; font-size: 14px;">
-                <a href="tel:03-1234-5678" style="padding: 10px 20px; border: 1px solid #C0A04C; display: inline-block;">お電話でのご予約・お問い合わせ</a>
+                <a href="tel:03-1234-5678" class="menu-button fade-in-up" style="background-color: #C0A04C; color: #1A1A1A; --delay: 0.4s;">お電話でのご予約・お問い合わせ</a>
             </p>
         </div>
     </section>
@@ -520,9 +598,36 @@
     </footer>
 
     <script>
+        // ハンバーガーメニューの切り替え
         document.getElementById('menuToggle').onclick = function() {
             document.getElementById('mainNav').classList.toggle('active');
         }
+
+        // --------------------------------------
+        // --- スクロールアニメーションの実行 ---
+        // --------------------------------------
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in-up');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 要素が表示範囲に入ったら visible クラスを追加
+                        entry.target.classList.add('visible');
+                        // 一度アニメーションしたら監視を停止
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // ビューポートの最下端から20%手前でアニメーションを開始
+                threshold: 0.2 
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
     </script>
 
 </body>
